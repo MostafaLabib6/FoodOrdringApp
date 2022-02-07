@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">TestingDatabase</string>
+    <string name="database_name">ORDERING.db</string>
+    <string name="restaurants_table_creation_statement">
+        CREATE TABLE RESTAURANTS (
+            REST_NAME VARCHAR(20) PRIMARY KEY,
+            RATE_COUNT INT, RATE_VALUE INT,
+            IMG TEXT
+        );
+    </string>
+    <string name="consumables_table_creation_statement">
+        CREATE TABLE CONSUMABLES (
+            CONS_NAME VARCHAR(20),
+            REST_NAME VARCHAR(20),
+            CATEGORY VARCHAR(20),
+            PRICE DECIMAL,
+            FAVORITE BIT,
+            IMG TEXT,
+            OFFER INT,
+            PRIMARY KEY(CONS_NAME, REST_NAME),
+            FOREIGN KEY(REST_NAME) REFERENCES RESTAURANTS (REST_NAME)
+        );
+    </string>
+    <string name="cart_table_creation_statement">
+        CREATE TABLE CART (
+            CONS_NAME VARCHAR(20),
+            REST_NAME VARCHAR(20),
+            UNIT_PRICE DECIMAL,
+            QUANTITY INT,
+            FOREIGN KEY(CONS_NAME, REST_NAME) REFERENCES CONSUMABLES (CONS_NAME, REST_NAME)
+        );
+    </string>
+    <string name="cart_table_drop_statement">
+        DROP TABLE IF EXISTS CART
+    </string>
+    <string name="consumables_table_drop_statement">
+        DROP TABLE IF EXISTS CONSUMABLES
+    </string>
+    <string name="restaurants_table_drop_statement">
+        DROP TABLE IF EXISTS RESTAURANTS
+    </string>
+    <string-array name="restaurant_attributes">
+        <item>REST_NAME</item>
+        <item>RATE_COUNT</item>
+        <item>RATE_VALUE</item>
+        <item>IMG</item>
+    </string-array>
+    <string-array name="consumables_attributes">
+        <item>CONS_NAME</item>
+        <item>REST_NAME</item>
+        <item>CATEGORY</item>
+        <item>PRICE</item>
+        <item>FAVORITE</item>
+        <item>IMG</item>
+        <item>OFFER</item>
+    </string-array>
+    <string-array name="cart_attributes">
+        <item>CONS_NAME</item>
+        <item>REST_NAME</item>
+        <item>UNIT_PRICE</item>
+        <item>QUANTITY</item>
+    </string-array>
+    <string name="database_adapter">Database Adapter</string>
+    <string name="consumablename">consumableName</string>
+    <string name="retaurantname">retaurantName</string>
+    <string name="favorites">Favorites</string>
+</resources>
